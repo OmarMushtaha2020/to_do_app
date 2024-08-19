@@ -16,13 +16,7 @@ class AppCubit extends Cubit<AppStates>{
   var index = 0;
   late Database db;
 int ?indexColor;
-List<Color>listOfColors=[
-  Color(0xFF42A5F5),
-  Color(3426920849),
-  Color(4294951175),
-  Color(0xffb51248),
 
-  ];
   List<Widget> Screen = [
     New_Tasks(),
     Done_Tasks(),
@@ -44,6 +38,7 @@ List<Color>listOfColors=[
 
   void colors(int value ){
     color=value;
+    print(color);
     emit(ChangeValueOfColor());
   }
   void changeIndexOfBottomNavigation(int value){

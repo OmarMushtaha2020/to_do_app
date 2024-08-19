@@ -4,68 +4,23 @@ import 'package:sizer/sizer.dart';
 
 import '../cubit/cubit.dart';
 import '../cubit/status.dart';
-
-Widget bulid_textFormField(
+List<Color>listOfValueColors=[
+  Color(0xFF42A5F5),
+  Color(3426920849),
+  Color(4294951175),
+  Color(0xffb51248),
+];
+Widget buildTextFromField(
         {VoidCallback? fun,
-        required TextEditingController email,
-        TextInputType? type,
-        required String text,
-        required IconData icons}) =>
-    TextFormField(
-      onChanged: on_changed,
-      validator: validator,
-      controller: email,
-      onTap: fun,
-      keyboardType: type,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: "$text",
-        labelStyle: TextStyle(
-          fontSize: 10.sp,
-        ),
-        prefixIcon: Icon(
-          icons,
-          size: 7.w,
-        ),
-      ),
-    );
-
-Widget bulid_textFromFieldTime(
-        {VoidCallback? fun,
-        required TextEditingController email,
-        TextInputType? type,
-        required String text,
-        required IconData icons}) =>
-    TextFormField(
-      onChanged: on_changed,
-      validator: validator_time,
-      controller: email,
-      onTap: fun,
-      keyboardType: type,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: "$text",
-        labelStyle: TextStyle(
-          fontSize: 10.sp,
-        ),
-        prefixIcon: Icon(
-          icons,
-          size: 7.w,
-        ),
-      ),
-    );
-
-Widget bulid_textFromFieldDate(
-        {VoidCallback? fun,
-        required TextEditingController email,
+        required TextEditingController controller,
         TextInputType? type,
         required String text,
         required IconData icons}) =>
     TextFormField(
       enabled: true,
-      onChanged: on_changed,
-      validator: validator_Date,
-      controller: email,
+      onChanged: onChangedFormField,
+      validator: validatorFormField,
+      controller: controller,
       onTap: fun,
       keyboardType: type,
       decoration: InputDecoration(
@@ -81,32 +36,22 @@ Widget bulid_textFromFieldDate(
       ),
     );
 
-void on_changed(String value) {
+void onChangedFormField(String value) {
   print(value);
 }
 
-String? validator(String? value) {
+String? validatorFormField(String? value) {
   if (value!.isEmpty) {
     return "title must not be empty";
   }
   return null;
 }
 
-String? validator_time(String? value) {
-  if (value!.isEmpty) {
-    return "Time must not be empty";
-  }
-  return null;
-}
 
-String? validator_Date(String? value) {
-  if (value!.isEmpty) {
-    return "Date must not be empty";
-  }
-  return null;
-}
 
-Widget bulid_New(item, context) => Dismissible(
+
+
+Widget buildNewTaskFormat(item, context) => Dismissible(
       key: UniqueKey(),
       child: Padding(
         padding: EdgeInsets.all(2.w),
@@ -137,19 +82,19 @@ Widget bulid_New(item, context) => Dismissible(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            bulid_textFormField(
+                            buildTextFromField(
                               icons: Icons.title,
                               type: TextInputType.name,
                               text: "Task Title",
-                              email: email,
+                              controller: email,
                             ),
                             SizedBox(
                               height: 3.h,
                             ),
-                            bulid_textFromFieldTime(
+                            buildTextFromField(
                               text: ' Task Time',
                               icons: Icons.watch_later_outlined,
-                              email: time,
+                              controller: time,
                               type: TextInputType.datetime,
                               fun: () {
                                 showTimePicker(
@@ -163,10 +108,10 @@ Widget bulid_New(item, context) => Dismissible(
                             SizedBox(
                               height: 2.h,
                             ),
-                            bulid_textFromFieldDate(
+                            buildTextFromField(
                               text: ' Task Date',
                               icons: Icons.calendar_today,
-                              email: date,
+                              controller: date,
                               fun: () {
                                 showDatePicker(
                                   context: context,
@@ -187,107 +132,68 @@ Widget bulid_New(item, context) => Dismissible(
                                 "Choose Color :",
                                 style: TextStyle(
                                   color: Colors.grey,
+                                  fontSize: 12.sp
                                 ),
                               ),
                             ),
                             SizedBox(
                               height: 1.h,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 2.w),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      AppCubit.get(context).colors(0xFF42A5F5);
-                                    },
-                                    child: Container(
-                                      height: 5.h,
-                                      width: 11.w,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFF42A5F5),
-                                        borderRadius:
-                                            BorderRadius.circular(20.h),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 3.w,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      AppCubit.get(context).colors(3426920849);
-                                    },
-                                    child: Container(
-                                      height: 5.h,
-                                      width: 11.w,
-                                      decoration: BoxDecoration(
-                                        color: Color(3426920849),
-                                        borderRadius:
-                                            BorderRadius.circular(20.h),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 3.w,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      AppCubit.get(context).colors(4294951175);
-                                    },
-                                    child: Container(
-                                      height: 5.h,
-                                      width: 11.w,
-                                      decoration: BoxDecoration(
-                                        color: Color(4294951175),
-                                        borderRadius:
-                                            BorderRadius.circular(20.h),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 3.w,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      AppCubit.get(context).colors(0xffb51248);
-                                    },
-                                    child: Container(
-                                      height: 5.h,
-                                      width: 11.w,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffb51248),
-                                        borderRadius:
-                                            BorderRadius.circular(20.w),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            Container(
+                              height: 5.h,
+                              child: ListView.separated(shrinkWrap: true,scrollDirection: Axis.horizontal,itemBuilder: (context,index)=>GestureDetector(
+                            onTap: (){
+                              if (index == 0) {
+                                AppCubit.get(context)
+                                    .colors(0xFF42A5F5);
+                              }
+                              if (index == 1) {
+                                AppCubit.get(context)
+                                    .colors(3426920849);
+                              }
+                              if (index == 2) {
+                                AppCubit.get(context)
+                                    .colors(4294951175);
+                              }
+                              if (index == 3) {
+                                AppCubit.get(context)
+                                    .colors(0xffb51248);
+                              }
+                            },
+                                child: CircleAvatar(
+                                  radius: 2.5.h,
+                                  backgroundColor: listOfValueColors[
+                                  index],
+                                ),
+                              ), separatorBuilder: (context,index)=>SizedBox(
+                                        width: 3.w,
+                                      ), itemCount: listOfValueColors.length),
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 1.5.h,
                             ),
-                            Container(
-                              width: double.infinity,
-                              color: Colors.blue,
-                              child: MaterialButton(
-                                onPressed: () {
-                                  if (form.currentState!.validate() &&
-                                      AppCubit.get(context).color != 0) {
-                                    AppCubit.get(context).updateDataOFElement(
-                                        email.text,
-                                        time.text,
-                                        date.text,
-                                        AppCubit.get(context).color,
-                                        item['id']);
-                                    Navigator.pop(context);
-                                  }
-                                },
-                                child: Text(
-                                  "Update",
-                                  style: TextStyle(color: Colors.white),
+                            Padding(
+                              padding:  EdgeInsets.only(bottom: 2.h),
+                              child: Container(
+                                width: double.infinity,
+                                color: Colors.blue,
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    if (form.currentState!.validate() &&
+                                        AppCubit.get(context).color != 0) {
+                                      AppCubit.get(context).updateDataOFElement(
+                                          email.text,
+                                          time.text,
+                                          date.text,
+                                          AppCubit.get(context).color,
+                                          item['id']);
+                                      Navigator.pop(context);
+                                    }
+                                  },
+                                  child: Text(
+                                    "Update",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             )
@@ -475,7 +381,7 @@ Widget buildListOfTask(List<Map> task, String typeTask) {
         itemBuilder: (context, index) {
           Widget? widget;
           if (typeTask == "newTask") {
-            widget = bulid_New(task[index], context);
+            widget = buildNewTaskFormat(task[index], context);
           } else if (typeTask == "doneTask") {
             widget = buildTaskFormat(task[index], context);
           } else {

@@ -4,6 +4,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project/shared/cubit/cubit.dart';
 import 'package:sizer/sizer.dart';  // Import sizer package
 import 'package:device_preview/device_preview.dart';  // Import device_preview
 
@@ -34,7 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(  // Use Sizer widget to initialize Sizer
       builder: (context, orientation, deviceType) {
-        return MaterialApp(
+        return BlocProvider(
+  create: (context) => AppCubit()..creatDd(),
+  child: MaterialApp(
           useInheritedMediaQuery: true,  // Required for DevicePreview to work properly
           locale: DevicePreview.locale(context), // Add the locale from DevicePreview
           builder: DevicePreview.appBuilder, // Add the builder for DevicePreview
@@ -62,7 +66,8 @@ class MyApp extends StatelessWidget {
             splashTransition: SplashTransition.sizeTransition,
           ),
           debugShowCheckedModeBanner: false,
-        );
+        ),
+);
       },
     );
   }
