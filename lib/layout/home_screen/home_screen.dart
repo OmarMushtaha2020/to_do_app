@@ -39,7 +39,7 @@ class Home_Screen extends StatelessWidget {
               title: Text(
                 AppCubit.get(context).Title[AppCubit.get(context).index],
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17.sp,
                     color: Colors.white,
                     fontWeight: FontWeight.w500),
               ),

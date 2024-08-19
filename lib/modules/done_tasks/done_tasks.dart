@@ -17,7 +17,8 @@ class Done_Tasks extends StatelessWidget {
 
       },
       builder: (context, state) {
-        return bulid_list_Done(Donetask);
+        return buildListOfTask(Donetask,"doneTask");
+
 
 
       },

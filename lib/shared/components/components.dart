@@ -523,71 +523,22 @@ Widget bulid_Archive(item, context) => Dismissible(
         );
       },
     );
-Widget bulid_list_Done(List<Map>task){
-if(task.length>0){
-
-  return ListView.separated(
-    physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) => bulid_Done(task[index], context),
-      separatorBuilder: (context, index) => Padding(
-        padding:  EdgeInsetsDirectional.only(start: 2.w, end: 2.w),
-        child: Container(
-          width: double.infinity,
-          height: 0.1.h,
-          color: Colors.grey[300],
-        ),
-      ),
-      itemCount: task.length);
-} else{
-  return Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(Icons.menu,size: 10.h,color: Colors.grey,),
-        Text("No Tasks Yet, Please Add Some Tasks", style: TextStyle(
-            fontSize: 15.sp,
-            fontWeight: FontWeight.bold
-
-        ),)
-      ],),
-  );
-}
-}
-Widget bulid_list_New(List<Map>task){
+Widget buildListOfTask(List<Map>task,String typeTask){
   if(task.length>0){
 
     return ListView.separated(
         physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index) => bulid_New(task[index], context),
-        separatorBuilder: (context, index) => Padding(
-          padding:  EdgeInsetsDirectional.only(start: 2.w, end: 2.w),
-          child: Container(
-            width: double.infinity,
-            height: 0.1.h,
-            color: Colors.grey[300],
-          ),
-        ),
-        itemCount: task.length);
-  } else{
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.menu,size: 10.h,color: Colors.grey,),
-          Text("No Tasks Yet, Please Add Some Tasks", style: TextStyle(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.bold
-
-          ),)
-        ],),
-    );
-  }
-}
-Widget bulid_list_Archive(List<Map>task){
-  if(task.length>0){
-    return ListView.separated(
-        physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index) => bulid_Archive(task[index], context),
+        itemBuilder: (context, index){
+          Widget? widget;
+          if(typeTask=="newTask"){
+            widget=bulid_New(task[index], context);
+          }else if(typeTask=="doneTask"){
+            widget=bulid_Done(task[index], context);
+          }else{
+            widget= bulid_Archive(task[index], context);
+          }
+          return widget;
+        } ,
         separatorBuilder: (context, index) => Padding(
           padding:  EdgeInsetsDirectional.only(start: 2.w, end: 2.w),
           child: Container(

@@ -16,7 +16,8 @@ class Archive_Tasks extends StatelessWidget {
 
       },
       builder: (context, state) {
-        return bulid_list_Archive(Archivetask);
+        return buildListOfTask(Archivetask,"archiveTask");
+
       },
     );
   }
