@@ -5,7 +5,6 @@ import 'package:sizer/sizer.dart';
 import '../cubit/cubit.dart';
 import '../cubit/status.dart';
 
-
 Widget bulid_textFormField(
         {VoidCallback? fun,
         required TextEditingController email,
@@ -24,7 +23,10 @@ Widget bulid_textFormField(
         labelStyle: TextStyle(
           fontSize: 10.sp,
         ),
-        prefixIcon: Icon(icons,size: 7.w,),
+        prefixIcon: Icon(
+          icons,
+          size: 7.w,
+        ),
       ),
     );
 
@@ -38,7 +40,6 @@ Widget bulid_textFromFieldTime(
       onChanged: on_changed,
       validator: validator_time,
       controller: email,
-
       onTap: fun,
       keyboardType: type,
       decoration: InputDecoration(
@@ -47,7 +48,10 @@ Widget bulid_textFromFieldTime(
         labelStyle: TextStyle(
           fontSize: 10.sp,
         ),
-        prefixIcon: Icon(icons,size: 7.w,),
+        prefixIcon: Icon(
+          icons,
+          size: 7.w,
+        ),
       ),
     );
 
@@ -70,7 +74,10 @@ Widget bulid_textFromFieldDate(
         labelStyle: TextStyle(
           fontSize: 10.sp,
         ),
-        prefixIcon: Icon(icons,size: 7.w,),
+        prefixIcon: Icon(
+          icons,
+          size: 7.w,
+        ),
       ),
     );
 
@@ -102,32 +109,29 @@ String? validator_Date(String? value) {
 Widget bulid_New(item, context) => Dismissible(
       key: UniqueKey(),
       child: Padding(
-        padding:  EdgeInsets.all(2.w),
+        padding: EdgeInsets.all(2.w),
         child: GestureDetector(
           onTap: () {
-
             var email = TextEditingController();
             var time = TextEditingController();
             var date = TextEditingController();
-            time.text=item["time"];
-            email.text=item["title"];
-            date.text=item["date"];
-AppCubit.get(context).color=item["color"];
+            time.text = item["time"];
+            email.text = item["title"];
+            date.text = item["date"];
+            AppCubit.get(context).color = item["color"];
             var form = GlobalKey<FormState>();
-            final Alert =
-            AlertDialog(
-
+            final Alert = AlertDialog(
               content: Container(
                 color: Colors.white,
-height: 50.h,
-                width:100.w,
+                height: 50.h,
+                width: 100.w,
                 child: Form(
                   key: form,
-                   child: Container(
-                     alignment: Alignment.center,
-                     child: SingleChildScrollView(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: SingleChildScrollView(
                       child: Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 2.w),
+                        padding: EdgeInsets.symmetric(horizontal: 2.w),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,9 +152,7 @@ height: 50.h,
                               email: time,
                               type: TextInputType.datetime,
                               fun: () {
-
                                 showTimePicker(
-
                                         context: context,
                                         initialTime: TimeOfDay.now())
                                     .then((value) {
@@ -167,12 +169,11 @@ height: 50.h,
                               email: date,
                               fun: () {
                                 showDatePicker(
-                                        context: context,
-                                    initialDate:DateTime(2030, 8, 1),
-                                    firstDate: DateTime(2030, 8, 1),
-                                    lastDate:DateTime(2030, 12, 31),
-                                )
-                                    .then((value) {
+                                  context: context,
+                                  initialDate: DateTime(2030, 8, 1),
+                                  firstDate: DateTime(2030, 8, 1),
+                                  lastDate: DateTime(2030, 12, 31),
+                                ).then((value) {
                                   date.text = DateFormat.yMMMd().format(value!);
                                 });
                               },
@@ -181,7 +182,7 @@ height: 50.h,
                               height: 2.h,
                             ),
                             Padding(
-                              padding:  EdgeInsets.only(left: 2.w),
+                              padding: EdgeInsets.only(left: 2.w),
                               child: Text(
                                 "Choose Color :",
                                 style: TextStyle(
@@ -193,7 +194,7 @@ height: 50.h,
                               height: 1.h,
                             ),
                             Padding(
-                              padding:  EdgeInsets.only(left: 2.w),
+                              padding: EdgeInsets.only(left: 2.w),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -206,7 +207,8 @@ height: 50.h,
                                       width: 11.w,
                                       decoration: BoxDecoration(
                                         color: Color(0xFF42A5F5),
-                                        borderRadius: BorderRadius.circular(20.h),
+                                        borderRadius:
+                                            BorderRadius.circular(20.h),
                                       ),
                                     ),
                                   ),
@@ -222,7 +224,8 @@ height: 50.h,
                                       width: 11.w,
                                       decoration: BoxDecoration(
                                         color: Color(3426920849),
-                                        borderRadius: BorderRadius.circular(20.h),
+                                        borderRadius:
+                                            BorderRadius.circular(20.h),
                                       ),
                                     ),
                                   ),
@@ -238,7 +241,8 @@ height: 50.h,
                                       width: 11.w,
                                       decoration: BoxDecoration(
                                         color: Color(4294951175),
-                                        borderRadius: BorderRadius.circular(20.h),
+                                        borderRadius:
+                                            BorderRadius.circular(20.h),
                                       ),
                                     ),
                                   ),
@@ -247,14 +251,15 @@ height: 50.h,
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                       AppCubit.get(context).colors(0xffb51248);
+                                      AppCubit.get(context).colors(0xffb51248);
                                     },
                                     child: Container(
                                       height: 5.h,
                                       width: 11.w,
                                       decoration: BoxDecoration(
                                         color: Color(0xffb51248),
-                                        borderRadius: BorderRadius.circular(20.w),
+                                        borderRadius:
+                                            BorderRadius.circular(20.w),
                                       ),
                                     ),
                                   ),
@@ -270,8 +275,7 @@ height: 50.h,
                               child: MaterialButton(
                                 onPressed: () {
                                   if (form.currentState!.validate() &&
-                                      AppCubit.get(context).color !=0) {
-
+                                      AppCubit.get(context).color != 0) {
                                     AppCubit.get(context).updateDataOFElement(
                                         email.text,
                                         time.text,
@@ -290,15 +294,14 @@ height: 50.h,
                           ],
                         ),
                       ),
+                    ),
                   ),
-                   ),
                 ),
               ),
             );
 
             showDialog(
               context: context,
-
               builder: (context) => Alert,
             );
           },
@@ -310,12 +313,16 @@ height: 50.h,
             child: Row(
               children: [
                 Padding(
-                  padding:  EdgeInsets.only(left: 3.w),
+                  padding: EdgeInsets.only(left: 3.w),
                   child: CircleAvatar(
                     radius: 4.5.h,
                     backgroundColor: Color(item["color"]),
-                    child: Text("${item["time"]}",maxLines: 2,overflow: TextOverflow.ellipsis,  style: TextStyle(
-                        fontSize: 10.sp, fontWeight: FontWeight.w500),
+                    child: Text(
+                      "${item["time"]}",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: 10.sp, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -330,23 +337,25 @@ height: 50.h,
                       width: 40.w,
                       child: Text(
                         "${item["title"]}",
-                        maxLines: 3,overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontSize: 10.sp, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Text(
                       "${item["date"]}",
-                      maxLines: 2,overflow: TextOverflow.ellipsis,
-
-                      style: TextStyle(color: Colors.grey,fontSize: 9.sp),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.grey, fontSize: 9.sp),
                     ),
                   ],
                 ),
-           Spacer(),
+                Spacer(),
                 IconButton(
                     onPressed: () {
-                      AppCubit.get(context).updatesDataForElement("Done", 1,item["id"]);
+                      AppCubit.get(context)
+                          .updatesDataForElement("Done", 1, item["id"]);
                     },
                     icon: Icon(
                       Icons.check_box,
@@ -355,12 +364,12 @@ height: 50.h,
                     )),
                 IconButton(
                     onPressed: () {
-                      AppCubit.get(context).updatesDataForElement("Archive", 2,item["id"]);
+                      AppCubit.get(context)
+                          .updatesDataForElement("Archive", 2, item["id"]);
                     },
                     icon: Icon(
                       Icons.archive,
                       size: 3.h,
-
                       color: Colors.black45,
                     ))
               ],
@@ -375,24 +384,29 @@ height: 50.h,
       },
     );
 
-Widget bulid_Done(item, context) => Dismissible(
+Widget buildTaskFormat(item, context) => Dismissible(
       key: UniqueKey(),
       child: Padding(
-        padding:  EdgeInsets.all(2.w),
+        padding: EdgeInsets.all(2.w),
         child: Container(
           height: 15.h,
           decoration: BoxDecoration(
-              color: Colors.grey[200], borderRadius: BorderRadius.circular(1.h)),
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(1.h)),
           child: Row(
             children: [
               Padding(
-                padding:  EdgeInsets.only(left: 3.w),
+                padding: EdgeInsets.only(left: 3.w),
                 child: CircleAvatar(
                   radius: 4.5.h,
                   backgroundColor: Color(item["color"]),
-                  child: Text("${item["time"]}",maxLines: 2,overflow: TextOverflow.ellipsis,style: TextStyle(
-                      fontSize: 10.sp, fontWeight: FontWeight.w500
-                  ),),
+                  child: Text(
+                    "${item["time"]}",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style:
+                        TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w500),
+                  ),
                 ),
               ),
               SizedBox(
@@ -406,23 +420,27 @@ Widget bulid_Done(item, context) => Dismissible(
                     width: 40.w,
                     child: Text(
                       "${item["title"]}",
-                      style:
-                          TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold,)
-                      ,
-                      maxLines: 3,overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     "${item["date"]}",
-                    style: TextStyle(color: Colors.grey,fontSize: 9.sp),
-                    maxLines: 2,overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: Colors.grey, fontSize: 9.sp),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
-         Spacer(),
+              Spacer(),
               IconButton(
                   onPressed: () {
-                    AppCubit.get(context).updatesDataForElement("Done", 1,item["id"]);
+                    AppCubit.get(context)
+                        .updatesDataForElement("Done", 1, item["id"]);
                   },
                   icon: Icon(
                     Icons.check_box,
@@ -431,12 +449,12 @@ Widget bulid_Done(item, context) => Dismissible(
                   )),
               IconButton(
                   onPressed: () {
-                    AppCubit.get(context).updatesDataForElement("Archive",2, item["id"]);
+                    AppCubit.get(context)
+                        .updatesDataForElement("Archive", 2, item["id"]);
                   },
                   icon: Icon(
                     Icons.archive,
                     size: 3.h,
-
                     color: Colors.black45,
                   ))
             ],
@@ -450,125 +468,54 @@ Widget bulid_Done(item, context) => Dismissible(
       },
     );
 
-Widget bulid_Archive(item, context) => Dismissible(
-      key: UniqueKey(),
-      child: Padding(
-        padding:  EdgeInsets.all(2.w),
-        child: Container(
-          height: 15.h,
-          decoration: BoxDecoration(
-              color: Colors.grey[200], borderRadius: BorderRadius.circular(1.h)),
-          child: Row(
-            children: [
-              Padding(
-                padding:  EdgeInsets.only(left: 3.w),
-                child: CircleAvatar(
-                  radius: 4.5.h,
-                  backgroundColor: Color(item["color"]),
-                  child: Text("${item["time"]}",maxLines: 2,overflow: TextOverflow.ellipsis,style: TextStyle(
-                      fontSize: 10.sp, fontWeight: FontWeight.w500,
-                  ),),
-                ),
-              ),
-              SizedBox(
-                width: 5.w,
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width:40.w,
-                    child: Text(
-                      "${item["title"]}",
-                      maxLines:3,overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Text(
-                    "${item["date"]}",
-                    maxLines: 2,overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.grey,fontSize: 9.sp),
-                  ),
-                ],
-              ),
-          Spacer(),
-              IconButton(
-                  onPressed: () {
-                    AppCubit.get(context).updatesDataForElement("Done", 1,item["id"]);
-                  },
-                  icon: Icon(
-                    Icons.check_box,
-                    size: 3.h,
-                    color: Colors.green,
-                  )),
-              IconButton(
-                  onPressed: () {
-                    AppCubit.get(context).updatesDataForElement("Archive", 2,item["id"]);
-                  },
-                  icon: Icon(
-                    Icons.archive,
-                    size: 3.h,
-
-                    color: Colors.black45,
-                  ))
-            ],
-          ),
-        ),
-      ),
-      onDismissed: (direction) {
-        AppCubit.get(context).deleteElement(
-          item["id"],
-        );
-      },
-    );
-Widget buildListOfTask(List<Map>task,String typeTask){
-  if(task.length>0){
-
+Widget buildListOfTask(List<Map> task, String typeTask) {
+  if (task.length > 0) {
     return ListView.separated(
         physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index){
+        itemBuilder: (context, index) {
           Widget? widget;
-          if(typeTask=="newTask"){
-            widget=bulid_New(task[index], context);
-          }else if(typeTask=="doneTask"){
-            widget=bulid_Done(task[index], context);
-          }else{
-            widget= bulid_Archive(task[index], context);
+          if (typeTask == "newTask") {
+            widget = bulid_New(task[index], context);
+          } else if (typeTask == "doneTask") {
+            widget = buildTaskFormat(task[index], context);
+          } else {
+            widget = buildTaskFormat(task[index], context);
           }
           return widget;
-        } ,
+        },
         separatorBuilder: (context, index) => Padding(
-          padding:  EdgeInsetsDirectional.only(start: 2.w, end: 2.w),
-          child: Container(
-            width: double.infinity,
-            height: 0.1.h,
-            color: Colors.grey[300],
-          ),
-        ),
+              padding: EdgeInsetsDirectional.only(start: 2.w, end: 2.w),
+              child: Container(
+                width: double.infinity,
+                height: 0.1.h,
+                color: Colors.grey[300],
+              ),
+            ),
         itemCount: task.length);
-  } else{
+  } else {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.menu,size: 10.h,color: Colors.grey,),
-          Text("No Tasks Yet, Please Add Some Tasks", style: TextStyle(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.bold
-
-          ),)
-        ],),
+          Icon(
+            Icons.menu,
+            size: 10.h,
+            color: Colors.grey,
+          ),
+          Text(
+            "No Tasks Yet, Please Add Some Tasks",
+            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
   }
 }
 
-Widget ConditionalBuilders(context){
-  if(State is! LoadData){
-  return  AppCubit.get(context).Screen[ AppCubit.get(context).index];
-  }else{
-    return  Center(child: CircularProgressIndicator());
+Widget ConditionalBuilders(context) {
+  if (State is! LoadData) {
+    return AppCubit.get(context).Screen[AppCubit.get(context).index];
+  } else {
+    return Center(child: CircularProgressIndicator());
   }
-
 }
