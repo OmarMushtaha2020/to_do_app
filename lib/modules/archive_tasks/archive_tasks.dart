@@ -16,7 +16,7 @@ class Archive_Tasks extends StatelessWidget {
 
       },
       builder: (context, state) {
-        return buildListOfTask(Archivetask,"archiveTask");
+        return buildListOfTask(archiveTask,"archiveTask");
 
       },
     );

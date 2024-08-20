@@ -1,3 +1,3 @@
-List<Map>Newtask=[];
-List<Map>Donetask=[];
-List<Map>Archivetask=[];
+List<Map>newTask=[];
+List<Map>doneTask=[];
+List<Map>archiveTask=[];

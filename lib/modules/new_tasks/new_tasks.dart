@@ -15,7 +15,7 @@ class New_Tasks extends StatelessWidget {
 
       },
       builder: (context, state) {
-        return buildListOfTask(Newtask,"newTask");
+        return buildListOfTask(newTask,"newTask");
       },
     );
   }

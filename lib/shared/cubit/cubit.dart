@@ -100,7 +100,7 @@ int ?indexColor;
 
     emit(LoadData());
       db.rawQuery('SELECT * FROM Tasq WHERE value =?',[value]).then((value) {
-        Newtask = value;
+        newTask = value;
 
     emit(GetFormDb());
       });
@@ -109,7 +109,7 @@ int ?indexColor;
 
     emit(LoadData());
     db.rawQuery('SELECT * FROM Tasq WHERE value =?',[value]).then((value) {
-      Donetask = value;
+      doneTask = value;
 
       emit(GetFormDb());
     });
@@ -117,7 +117,7 @@ int ?indexColor;
   void getListOfArchivedTask(db,int value)  {
     emit(LoadData());
     db.rawQuery('SELECT * FROM Tasq WHERE value =?',[value]).then((value) {
-      Archivetask = value;
+      archiveTask = value;
 
       emit(GetFormDb());
     });

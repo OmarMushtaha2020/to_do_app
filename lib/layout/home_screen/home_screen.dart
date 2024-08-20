@@ -67,6 +67,12 @@ class Home_Screen extends StatelessWidget {
                           buildTextFromField(
                             icons: Icons.title,
                             type: TextInputType.name,
+                            validatorForm: ( value){
+                              if(value!.isEmpty){
+                                return "title must not be empty";
+                              }
+                              return null;
+                            },
                             text: "Task Title",
                             controller: email,
                           ),
@@ -75,6 +81,12 @@ class Home_Screen extends StatelessWidget {
                           ),
                           buildTextFromField(
                             text: ' Task Time',
+                            validatorForm: ( value){
+                              if(value!.isEmpty){
+                                return "time must not be empty";
+                              }
+                              return null;
+                            },
                             icons: Icons.watch_later_outlined,
                             controller: time,
                             type: TextInputType.datetime,
@@ -92,6 +104,12 @@ class Home_Screen extends StatelessWidget {
                           ),
                           buildTextFromField(
                             text: ' Task Date',
+                            validatorForm: ( value){
+                              if(value!.isEmpty){
+                                return "date must not be empty";
+                              }
+                              return null;
+                            },
                             icons: Icons.calendar_today,
                             controller: date,
                             fun: () {
@@ -224,6 +242,12 @@ class Home_Screen extends StatelessWidget {
                               icons: Icons.title,
                               type: TextInputType.name,
                               text: "Task Title",
+                              validatorForm: ( value){
+                                if(value!.isEmpty){
+                                  return "title must not be empty";
+                                }
+                                return null;
+                              },
                               controller: email,
                             ),
                             SizedBox(
@@ -231,6 +255,12 @@ class Home_Screen extends StatelessWidget {
                             ),
                             buildTextFromField(
                               text: ' Task Time',
+                              validatorForm: ( value){
+                                if(value!.isEmpty){
+                                  return "time must not be empty";
+                                }
+                                return null;
+                              },
                               icons: Icons.watch_later_outlined,
                               controller: time,
                               type: TextInputType.datetime,
@@ -250,6 +280,12 @@ class Home_Screen extends StatelessWidget {
                             ),
                             buildTextFromField(
                               text: ' Task Date',
+                              validatorForm: ( value){
+                                if(value!.isEmpty){
+                                  return "date must not be empty";
+                                }
+                                return null;
+                              },
                               icons: Icons.calendar_today,
                               controller: date,
                               fun: () {

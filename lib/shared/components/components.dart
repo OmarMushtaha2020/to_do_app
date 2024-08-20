@@ -14,19 +14,28 @@ Widget buildTextFromField(
         {VoidCallback? fun,
         required TextEditingController controller,
         TextInputType? type,
+          required String? validatorForm(String? value),
         required String text,
         required IconData icons}) =>
     TextFormField(
       enabled: true,
+
       onChanged: onChangedFormField,
-      validator: validatorFormField,
+      validator: validatorForm,
       controller: controller,
       onTap: fun,
       keyboardType: type,
+      style: TextStyle(
+        fontSize: 10.sp, // Change this value to enlarge or reduce the text size
+      ),
+
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: "$text",
+errorStyle: TextStyle(
+fontSize: 10.sp, // Change this value to enlarge or reduce the text size
 
+),
         labelStyle: TextStyle(
           fontSize: 10.sp,
         ),
@@ -41,9 +50,9 @@ void onChangedFormField(String value) {
   print(value);
 }
 
-String? validatorFormField(String? value) {
+String? validatorFormField(String? value,{String ?name}) {
   if (value!.isEmpty) {
-    return "title must not be empty";
+    return "$name must not be empty";
   }
   return null;
 }
@@ -85,6 +94,12 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                           children: [
                             buildTextFromField(
                               icons: Icons.title,
+                              validatorForm: ( value){
+                                if(value!.isEmpty){
+                                  return "title must not be empty";
+}
+                                return null;
+},
                               type: TextInputType.name,
                               text: "Task Title",
                               controller: email,
@@ -94,6 +109,12 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                             ),
                             buildTextFromField(
                               text: ' Task Time',
+validatorForm: ( value){
+if(value!.isEmpty){
+return "time must not be empty";
+}
+return null;
+},
                               icons: Icons.watch_later_outlined,
                               controller: time,
                               type: TextInputType.datetime,
@@ -111,6 +132,12 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                             ),
                             buildTextFromField(
                               text: ' Task Date',
+validatorForm: ( value){
+if(value!.isEmpty){
+return "date must not be empty";
+}
+return null;
+},
                               icons: Icons.calendar_today,
                               controller: date,
                               fun: () {

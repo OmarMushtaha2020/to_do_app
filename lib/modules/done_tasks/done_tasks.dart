@@ -17,7 +17,7 @@ class Done_Tasks extends StatelessWidget {
 
       },
       builder: (context, state) {
-        return buildListOfTask(Donetask,"doneTask");
+        return buildListOfTask(doneTask,"doneTask");
 
 
 
