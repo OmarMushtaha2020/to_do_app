@@ -17,31 +17,31 @@ class AppCubit extends Cubit<AppStates>{
   late Database db;
 int ?indexColor;
 
-  List<Widget> Screen = [
+  List<Widget> screen = [
     New_Tasks(),
     Done_Tasks(),
     Archive_Tasks(),
   ];
-  List<String> Title = [
+  List<String> titleOfScreen = [
     "New Tasks",
     "Done Tasks",
     "Archive Tasks",
   ];
   IconData icon = Icons.edit;
   bool show = true;
-  Future<void> changesStatusOfObscuredOfTextForm(IconData icons,bool shows ) async {
+  Future<void> changeValueOfObscuredTextForm(IconData icons,bool shows ) async {
     icon=icons;
     show=shows;
     emit(ShowPasswordAndHide());
   }
    int color=0;
 
-  void colors(int value ){
+  void changeValueOfColor(int value ){
     color=value;
     print(color);
     emit(ChangeValueOfColor());
   }
-  void changeIndexOfBottomNavigation(int value){
+  void changeIndexOfBottomNavigationBar(int value){
     index=value;
     emit(ChangeIndexOfBottomNavigation());
   }

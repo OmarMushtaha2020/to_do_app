@@ -26,12 +26,13 @@ Widget buildTextFromField(
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: "$text",
+
         labelStyle: TextStyle(
           fontSize: 10.sp,
         ),
         prefixIcon: Icon(
           icons,
-          size: 7.w,
+          size: 4.w,
         ),
       ),
     );
@@ -145,19 +146,19 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                             onTap: (){
                               if (index == 0) {
                                 AppCubit.get(context)
-                                    .colors(0xFF42A5F5);
+                                    .changeValueOfColor(0xFF42A5F5);
                               }
                               if (index == 1) {
                                 AppCubit.get(context)
-                                    .colors(3426920849);
+                                    .changeValueOfColor(3426920849);
                               }
                               if (index == 2) {
                                 AppCubit.get(context)
-                                    .colors(4294951175);
+                                    .changeValueOfColor(4294951175);
                               }
                               if (index == 3) {
                                 AppCubit.get(context)
-                                    .colors(0xffb51248);
+                                    .changeValueOfColor(0xffb51248);
                               }
                             },
                                 child: CircleAvatar(
@@ -176,6 +177,8 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                               padding:  EdgeInsets.only(bottom: 2.h),
                               child: Container(
                                 width: double.infinity,
+
+                                height: 6.h,
                                 color: Colors.blue,
                                 child: MaterialButton(
                                   onPressed: () {
@@ -192,7 +195,7 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                                   },
                                   child: Text(
                                     "Update",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.white,fontSize: 12.sp),
                                   ),
                                 ),
                               ),
@@ -226,6 +229,7 @@ Widget buildNewTaskFormat(item, context) => Dismissible(
                     child: Text(
                       "${item["time"]}",
                       maxLines: 2,
+textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           fontSize: 10.sp, fontWeight: FontWeight.w500),
@@ -410,6 +414,7 @@ Widget buildListOfTask(List<Map> task, String typeTask) {
           ),
           Text(
             "No Tasks Yet, Please Add Some Tasks",
+            textAlign: TextAlign.center,
             style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
           )
         ],
@@ -420,7 +425,7 @@ Widget buildListOfTask(List<Map> task, String typeTask) {
 
 Widget ConditionalBuilders(context) {
   if (State is! LoadData) {
-    return AppCubit.get(context).Screen[AppCubit.get(context).index];
+    return AppCubit.get(context).screen[AppCubit.get(context).index];
   } else {
     return Center(child: CircularProgressIndicator());
   }
