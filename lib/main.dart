@@ -25,10 +25,7 @@ void main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
-  runApp(DevicePreview(
-    enabled: !kReleaseMode,  // Enable DevicePreview only in debug mode
-    builder: (context) => MyApp(), // Wrap your app
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -55,7 +52,7 @@ class MyApp extends StatelessWidget {
             splash: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(image: AssetImage("assets/image/list.png"), width: 20.w, height: 10.h, fit: BoxFit.cover,),
+                Image(image: AssetImage("assets/image/list.png"), width: 20.w, height: 10.h, fit: BoxFit.contain,),
                 SizedBox(height: 5.h,),
                 Text("ToDo App", style: TextStyle(
                     fontWeight: FontWeight.bold,

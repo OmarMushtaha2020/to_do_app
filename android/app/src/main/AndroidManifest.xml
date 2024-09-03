@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="project"
+        android:label="ToDoApp"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

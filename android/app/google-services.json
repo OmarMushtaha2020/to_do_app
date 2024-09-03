@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:196412753097:android:305035d8fb50138a473918",
         "android_client_info": {
-          "package_name": "com.example.project"
+          "package_name": "com.example.my_to_do_app"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "196412753097-4rmiccua71htvr12v37a07pslv7nd74a.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.project"
+                "bundle_id": "com.example.my_to_do_app"
               }
             }
           ]
